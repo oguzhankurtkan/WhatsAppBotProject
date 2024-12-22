@@ -11,3 +11,8 @@ def start():
     # Using Chrome and 4 seconds wait
     driver = webdriver.Chrome()
     driver.implicitly_wait(4)
+    # Redirect to the URL with get function
+    driver.get('https://web.whatsapp.com/')
+    input('y')
+
+start()
