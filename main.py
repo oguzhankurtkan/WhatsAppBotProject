@@ -13,6 +13,11 @@ def start():
     driver.implicitly_wait(4)
     # Redirect to the URL with get function
     driver.get('https://web.whatsapp.com/')
-    input('y')
+    input('If you have scanned the QR code, press the enter key.')
+    message_are = driver.find_element_by_xpath('//*[@id="main"]/footer/div[1]/div[2]/div/div[2]')
+
+    # Online status check and click the message are
+    while True:
+        message_area.click()
 
 start()
