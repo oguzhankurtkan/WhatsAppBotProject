@@ -19,5 +19,11 @@ def start():
     # Online status check and click the message are
     while True:
         message_area.click()
+        # Retrieving WhatsApp online status information
+        wa_source = driver.page_source
+        soup = bs(wp_source, 'lxml')
+        search = soup.find_all('div', {'class': ['_2Gdma', '_2amHe']})
+
+
 
 start()
