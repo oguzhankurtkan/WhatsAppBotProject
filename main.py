@@ -1,7 +1,9 @@
 from selenium import webdriver
 import requests
-import bs4 import BeautifulSoup as bs
-from selenium.webdriver.common.keys
+from bs4 import BeautifulSoup as bs
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+
 
 with open ("text.txt", "r", encoding="utf-8") as text:
     textlist = list()
@@ -16,14 +18,15 @@ def start():
     # Redirect to the URL with get function
     driver.get('https://web.whatsapp.com/')
     input('If you have scanned the QR code, press the enter key.')
-    message_are = driver.find_element(By.XPATH, ('//*[@id="main"]/footer/div[1]/div[2]/div/div[2]')
+    message_area = driver.find_element(By.XPATH, '//*[@id="main"]/footer/div[1]/div[2]/div/div[2]')
+
 
     # Online status check and click the message are
     while True:
         message_area.click()
         # Retrieving WhatsApp online status information
         wa_source = driver.page_source
-        soup = bs(wp_source, 'lxml')
+        soup = bs(wa_source, 'lxml')
         search = soup.find_all('div', {'class': ['_2Gdma', '_2amHe']})
         try:
             online = search[0].span.text
