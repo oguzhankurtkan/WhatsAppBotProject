@@ -12,6 +12,7 @@ with open ("text.txt", "r", encoding="utf-8") as text:
     textlist = message.split("\n")
 
 def start():
+    flag = False
     # Using Chrome and 4 seconds wait
     driver = webdriver.Chrome()
     driver.implicitly_wait(4)
@@ -31,6 +32,9 @@ def start():
         try:
             online = search[0].span.text
             print(online)
+            if (online in ['online']) and flag == False:
+                print ('online test')
+                msgToSend = textlist[random.randint(0, len(textlist)-1)]
         except:
             pass
 
