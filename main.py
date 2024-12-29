@@ -3,6 +3,8 @@ import requests
 from bs4 import BeautifulSoup as bs
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
+import time
+import random
 
 
 with open ("text.txt", "r", encoding="utf-8") as text:
@@ -32,11 +34,21 @@ def start():
         try:
             online = search[0].span.text
             print(online)
-            if (online in ['online']) and flag == False:
+            if (online in ['online', 'çevrimiçi']) and flag == False:
                 print ('online test')
                 msgToSend = textlist[random.randint(0, len(textlist)-1)]
+                message_area.send_keys(msgToSend)
+                message_area.send_keys(Keys.ENTER)
+                # Main point: Not spam.
+                flag = True
+            elif online not in ['online', 'çevrimiçi']:
+                print('Offline!')
+                flag = False
         except:
-            pass
+            print('Offline!')
+            flag = False
+
+        time.sleep(5)
 
 
 
